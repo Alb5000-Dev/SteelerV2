@@ -1,0 +1,17 @@
+Frame
+Frying Pan
+Toaster
+Microwave
+Waffle Maker
+Cooking Pot
+Wine Cup
+Champaign Cup
+Book
+TV 1
+TV 2
+Copper Trophy
+Silver Trophy
+Gold Trophy
+Diamond Trophy
+Emerald Trophy
+Platinium Trophy
