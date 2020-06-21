@@ -69,9 +69,9 @@
     <Compile Include="Assets\Scripts\Player\PlayerLook.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\Player\RaycastInteractionManager.cs" />
-    <Compile Include="Assets\Scripts\PropScriptableObject.cs" />
-    <Compile Include="Assets\Scripts\RandomPropsList.cs" />
-    <Compile Include="Assets\Scripts\propID.cs" />
+    <Compile Include="Assets\Scripts\RandomPropsList\PropScriptableObject.cs" />
+    <Compile Include="Assets\Scripts\RandomPropsList\RandomPropsList.cs" />
+    <Compile Include="Assets\Scripts\RandomPropsList\propID.cs" />
     <None Include="Assets\Liste.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.1f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
