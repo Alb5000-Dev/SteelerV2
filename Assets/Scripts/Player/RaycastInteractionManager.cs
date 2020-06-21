@@ -33,6 +33,10 @@ public class RaycastInteractionManager : MonoBehaviour
 
     public PlayerLook playerLook;
 
+    [SerializeField]
+    private string interactKey;
+    public RandomPropsList randPropList;
+
     private void Update()
     {
         //print(interactionGO);
@@ -47,6 +51,16 @@ public class RaycastInteractionManager : MonoBehaviour
             {
                 interactionGO = hit.transform.gameObject;
                 ActionDependingOnGOTag();
+            }
+            else if(Input.GetAxisRaw(interactKey) > 0)
+            {
+                if(hit.transform.gameObject.GetComponent<propID>() != null)
+                {
+                    //print("item has a prop id");
+                    GameObject go = hit.transform.gameObject;
+                    //print(go.name);
+                    randPropList.propStolen(go);
+                }
             }
         }
     }

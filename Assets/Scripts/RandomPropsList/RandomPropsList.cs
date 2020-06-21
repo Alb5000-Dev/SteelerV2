@@ -34,17 +34,21 @@ public class RandomPropsList : MonoBehaviour
     //Activate when the thief steal a prop
     public void propStolen(GameObject gameObject)
     {
-        hasStolen++;
-        foreach (var item in propScriptableObjects)
+        if (propsToSteal.Contains(gameObject))
         {
-            if (gameObject.GetComponent<propID>().id == item.id)
+            hasStolen++;
+            foreach (var item in propScriptableObjects)
             {
-                valueStolen += item.value;
+                if (gameObject.GetComponent<propID>().id == item.id)
+                {
+                    valueStolen += item.value;
+                }
             }
+            propsToSteal.Remove(gameObject);
+
+            //updateUI();
+            Destroy(gameObject);
         }
-        propsToSteal.Remove(gameObject);
-        
-        //updateUI();
     }
 
     public void updateUI()
