@@ -13,7 +13,8 @@ public class ShakeTransformEventData2 : ScriptableObject
     }
     public Target target = Target.Position;
 
-    public float amplitude = 1f;
+    public float x_amplitude = 1f;
+    public float y_amplitude = 1f;
     public float frequency = 1f;
 
     public float duration = 1f;
@@ -23,11 +24,12 @@ public class ShakeTransformEventData2 : ScriptableObject
         new Keyframe(0.2f, 1.0f),
         new Keyframe(1.0f, 0.0f));
 
-    public void Init(float amplitude, float frequency, float duration, AnimationCurve blendOverLifetime, Target target)
+    public void Init(float x_amplitude, float y_amplitude, float frequency, float duration, AnimationCurve blendOverLifetime, Target target)
     {
         this.target = target;
 
-        this.amplitude = amplitude;
+        this.x_amplitude = x_amplitude;
+        this.y_amplitude = y_amplitude;
         this.frequency = frequency;
 
         this.duration = duration;

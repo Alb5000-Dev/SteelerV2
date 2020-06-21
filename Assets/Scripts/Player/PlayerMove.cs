@@ -28,7 +28,7 @@ public class PlayerMove : MonoBehaviour
         charRB = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {     
         PlayerMovement();
     }
@@ -40,8 +40,9 @@ public class PlayerMove : MonoBehaviour
         
         moveDir = new Vector3(horizInput , charRB.velocity.y, vertInput);
         moveDir = transform.TransformDirection(moveDir);
-        
-        charRB.velocity = Vector3.Lerp(charRB.velocity, moveDir, Time.fixedDeltaTime * 20f); ;
+
+        //charRB.velocity = Vector3.Lerp(charRB.velocity, moveDir, 0.5f); 
+        charRB.velocity = moveDir;
         SetMovementSpeed();
     }
 

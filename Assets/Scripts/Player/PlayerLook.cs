@@ -19,7 +19,7 @@ public class PlayerLook : MonoBehaviour
         mouseSensitivity = mouseSensitivitySet;
     }
 
-    void LateUpdate()
+    void Update()
     {
         CameraRotation();
     }

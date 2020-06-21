@@ -59,7 +59,7 @@ public class ShakeTransform2 : MonoBehaviour
 
             noise -= Vector3.one * 0.5f;
 
-            noise *= data.amplitude;           
+            noise = new Vector3(data.x_amplitude * noise.x, data.y_amplitude * noise.y, 0f);    
             
             float agePercent = 1.0f - (timeRemaining / duration);
             noise *= data.blendOverLifetime.Evaluate(agePercent);
@@ -80,10 +80,10 @@ public class ShakeTransform2 : MonoBehaviour
     {
         shakeEvents.Add(new ShakeEvent(data));
     }
-    public void AddShakeEvent(float amplitude, float frequency, float duration, AnimationCurve blendOverLifetime, ShakeTransformEventData2.Target target)
+    public void AddShakeEvent(float x_amplitude, float y_amplitude, float frequency, float duration, AnimationCurve blendOverLifetime, ShakeTransformEventData2.Target target)
     {
         ShakeTransformEventData2 data = ShakeTransformEventData2.CreateInstance<ShakeTransformEventData2>();
-        data.Init(amplitude, frequency, duration, blendOverLifetime, target);
+        data.Init(x_amplitude, y_amplitude, frequency, duration, blendOverLifetime, target);
 
         AddShakeEvent(data);
     }

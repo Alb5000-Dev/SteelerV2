@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: WalkingShake
   m_EditorClassIdentifier: 
   target: 0
-  amplitude: 0.15
+  x_amplitude: 0.1
+  y_amplitude: 0.2
   frequency: 0.5
   duration: 1
   blendOverLifetime:

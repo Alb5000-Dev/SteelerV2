@@ -83,7 +83,7 @@ public class RaycastInteractionManager : MonoBehaviour
                 carry(ObjectGrab.carriedObject);            
             }
             else if (!ObjectGrab.carrying){
-                yield return new WaitForSeconds(0.1f);
+                //yield return new WaitForSeconds(0.1f);
                 ObjectGrab.objectDroped = true;
                 break;
             }
@@ -95,7 +95,7 @@ public class RaycastInteractionManager : MonoBehaviour
         ObjectGrab.goRB = go.GetComponent<Rigidbody>();
         ObjectGrab.goRB.position = Vector3.Lerp(go.transform.position, 
         Camera.main.transform.position + Camera.main.transform.forward * ObjectGrab.distance, 
-        Time.deltaTime * ObjectGrab.smooth);
+        ObjectGrab.smooth * Time.fixedDeltaTime);
         
 
         //
