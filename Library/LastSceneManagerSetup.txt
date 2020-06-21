@@ -1,5 +1,9 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/Props Showcase.unity
+=======
+- path: Assets/Scenes/IcescreamDev.unity
+>>>>>>> 40667576a9b71e5a4c8930afa09b21308abb1a0f
   isLoaded: 1
   isActive: 1
   isSubScene: 0
