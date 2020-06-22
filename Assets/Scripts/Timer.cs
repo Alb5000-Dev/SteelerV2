@@ -11,7 +11,7 @@ public class Timer : MonoBehaviour
 
     public Text timer;
 
-    IEnumerator timerCoroutine(float timeToGo)
+    public IEnumerator timerCoroutine(float timeToGo)
     {
         timeLeft = timeToGo;
         while (timeLeft >= 0)
@@ -24,7 +24,6 @@ public class Timer : MonoBehaviour
         if (timeToGo == ownerTime)
         {
             //Changement de personnage
-            StartCoroutine(timerCoroutine(thiefTime));
         }
         else
         {
