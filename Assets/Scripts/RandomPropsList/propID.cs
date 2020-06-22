@@ -5,4 +5,5 @@ using UnityEngine;
 public class propID : MonoBehaviour
 {
     public int id;
+    public new string name;
 }
