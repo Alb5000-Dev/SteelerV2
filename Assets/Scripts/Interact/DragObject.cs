@@ -20,12 +20,22 @@ public class GrabDrawerClass
     public float distance;
     public float maxDistance;
 }
+[System.Serializable]
+public class GrabDoorClass
+{
+    public bool freezeRotation;
+    public bool shouldUnfreezeRotations;
+    public float pickupRange;
+    public float distance;
+    public float maxDistance;
+}
 
 [System.Serializable]
 public class TagsClass
 {
     public string grabPropTag = "CanBeGrabbed";
     public string drawerTag = "Drawer";
+    public string doorTag = "Door";
 }
 
 public class DragObject : MonoBehaviour
@@ -36,6 +46,7 @@ public class DragObject : MonoBehaviour
 
     public GrabPropClass GrabProps = new GrabPropClass();
     public GrabDrawerClass GrabDrawer = new GrabDrawerClass();
+    public GrabDoorClass GrabDoor = new GrabDoorClass();
     public TagsClass Tags = new TagsClass();
 
     private float pickupRange = 3f;
@@ -106,6 +117,17 @@ public class DragObject : MonoBehaviour
                 distance = GrabDrawer.distance;
                 maxDistanceGrab = GrabDrawer.maxDistance;
                 shouldUnfreezeRotations = GrabDrawer.shouldUnfreezeRotations;
+            }
+            if (hit.collider.tag == Tags.doorTag && tryPickupObject)
+            {
+                isObjectHeld = true;
+                objectHeld.GetComponent<Rigidbody>().useGravity = true;
+                objectHeld.GetComponent<Rigidbody>().freezeRotation = GrabDoor.freezeRotation;
+                //
+                pickupRange = GrabDoor.pickupRange;
+                distance = GrabDoor.distance;
+                maxDistanceGrab = GrabDoor.maxDistance;
+                shouldUnfreezeRotations = GrabDoor.shouldUnfreezeRotations;
             }
         }
     }
