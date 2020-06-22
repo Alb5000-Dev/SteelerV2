@@ -70,5 +70,9 @@ public class RandomPropsList : MonoBehaviour
                 propsListText.GetComponent<TextMeshProUGUI>().text += item.GetComponent<propID>().name + "\n";
             }  
         }
+        if (propsStolen.Count() == nbToSteal)
+        {
+            propsListText.GetComponent<TextMeshProUGUI>().text = "Get out of the house before the owner comes back !";
+        }
     }
 }
