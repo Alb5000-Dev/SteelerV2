@@ -94,7 +94,7 @@ public class RaycastInteractionManager : MonoBehaviour
         {
             if (ObjectGrab.carrying)
             {               
-                carry(ObjectGrab.carriedObject);            
+                carry(ObjectGrab.carriedObject);  
             }
             else if (!ObjectGrab.carrying){
                 //yield return new WaitForSeconds(0.1f);
@@ -106,11 +106,17 @@ public class RaycastInteractionManager : MonoBehaviour
     }
     void carry(GameObject go)
     {
+        Vector3 anchorPoint = Camera.main.transform.position + Camera.main.transform.forward * ObjectGrab.distance;
         ObjectGrab.goRB = go.GetComponent<Rigidbody>();
         ObjectGrab.goRB.position = Vector3.Lerp(go.transform.position, 
         Camera.main.transform.position + Camera.main.transform.forward * ObjectGrab.distance, 
-        ObjectGrab.smooth * Time.fixedDeltaTime);
-        
+        ObjectGrab.smooth);
+
+        /*float dist = Vector3.Distance(ObjectGrab.goRB.position, Camera.main.transform.position + Camera.main.transform.forward * ObjectGrab.distance);
+        if(dist > 0.5f)
+        {
+            dropObject();
+        }*/
 
         //
 

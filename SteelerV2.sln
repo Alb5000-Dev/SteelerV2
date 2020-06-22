@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{04E24536-F4D5-5622-A03B-1B8AEC6D2C4B}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{BF9F155B-CE9B-9326-BC6E-589FFF5F9C0A}"
 EndProject
 Global
@@ -9,6 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{04E24536-F4D5-5622-A03B-1B8AEC6D2C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04E24536-F4D5-5622-A03B-1B8AEC6D2C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04E24536-F4D5-5622-A03B-1B8AEC6D2C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04E24536-F4D5-5622-A03B-1B8AEC6D2C4B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BF9F155B-CE9B-9326-BC6E-589FFF5F9C0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BF9F155B-CE9B-9326-BC6E-589FFF5F9C0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF9F155B-CE9B-9326-BC6E-589FFF5F9C0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
