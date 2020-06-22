@@ -1,6 +1,6 @@
-﻿using UnityEngine.UI;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
+using TMPro;
 
 public class Timer : MonoBehaviour
 {
@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
 
     public float timeLeft;
 
-    public Text timer;
+    public GameObject timer;
 
     public IEnumerator timerCoroutine(float timeToGo)
     {
@@ -18,25 +18,8 @@ public class Timer : MonoBehaviour
         {
             yield return new WaitForEndOfFrame();
             timeLeft -= Time.unscaledDeltaTime;
-            timer.text = Mathf.Round(timeLeft).ToString();
+            timer.GetComponent<TextMeshProUGUI>().text = Mathf.Round(timeLeft).ToString();
         }
-        timer.text = "0";
-        if (timeToGo == ownerTime)
-        {
-            //Changement de personnage
-        }
-        else
-        {
-            //Fin de Game
-            timer.text = "";
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            StartCoroutine(timerCoroutine(ownerTime));
-        }
+        timer.GetComponent<TextMeshProUGUI>().text = "0";
     }
 }

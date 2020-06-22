@@ -5,6 +5,7 @@ public class PlayerSwitch : MonoBehaviour
 {
     public enum playerType
     {
+        notPlaying,
         owner,
         thief
     }
@@ -22,7 +23,9 @@ public class PlayerSwitch : MonoBehaviour
         timer.StartCoroutine(timer.timerCoroutine(transitionTime));
         yield return new WaitForSeconds(transitionTime);
 
-        //TP player à l'entrée de la maison
+
+        //TP player à l'entrée de la maison -> A FAIRE
+
 
         //L'owner commence à jouer
         currentPlayerType = playerType.owner;
@@ -41,8 +44,10 @@ public class PlayerSwitch : MonoBehaviour
         //Mini Timer avant de commencer pour laisser le temps au voleur de se préparer
         timer.StartCoroutine(timer.timerCoroutine(transitionTime));
         yield return new WaitForSeconds(transitionTime);
+        
 
-        //TP player à l'entrée de la maison
+        //TP player à l'entrée de la maison -> A FAIRE
+
 
         //Le thief commence à jouer
         currentPlayerType = playerType.thief;
