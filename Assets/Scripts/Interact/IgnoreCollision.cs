@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class IgnoreCollision : MonoBehaviour
 {
+    public string [] ignoreCollisionsFrom;
     private void OnCollisionEnter(Collision collision)
     {
         Collider collider = this.GetComponent<Collider>();
-        if(collision.transform.tag == "Player")
+        foreach (string tag in ignoreCollisionsFrom)
         {
-            Physics.IgnoreCollision(collision.collider, collider);
-        }
+            if (collision.transform.tag == tag)
+            {
+                Physics.IgnoreCollision(collision.collider, collider);
+            }
+        }        
     }
 }
