@@ -60,13 +60,20 @@ public class DragObject : MonoBehaviour
 
     private bool shouldUnfreezeRotations;
 
+    public bool isHoveringAnObject = false;
+
     void Start()
     {
         isObjectHeld = false;
         tryPickupObject = false;
         objectHeld = null;
+        isHoveringAnObject = false;
     }
 
+    private void Update()
+    {
+        analyseProp();
+    }
     private void FixedUpdate()
     {
         if (Input.GetButton(grabKey))
@@ -133,13 +140,20 @@ public class DragObject : MonoBehaviour
     }
     void holdObject()
     {
-        print("Holding object");
+        //print("Holding object");
         Ray playerAim = p_Cam.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
 
         Vector3 nextPos = p_Cam.transform.position + playerAim.direction * distance;
         Vector3 currPos = objectHeld.transform.position;
 
         objectHeld.GetComponent<Rigidbody>().velocity = (nextPos - currPos) * 10;
+
+        //print(Vector3.Distance(objectHeld.transform.position, p_Cam.gameObject.transform.position));
+
+        if(Vector3.Distance(objectHeld.transform.position, p_Cam.gameObject.transform.position) > maxDistanceGrab)
+        {
+            dropObject();
+        }
     }
 
     void dropObject()
@@ -149,5 +163,39 @@ public class DragObject : MonoBehaviour
         objectHeld.GetComponent<Rigidbody>().useGravity = true;
         objectHeld.GetComponent<Rigidbody>().freezeRotation = !shouldUnfreezeRotations;
         objectHeld = null;
+    }
+
+    void analyseProp()
+    {
+        Ray playerAimForOutline = p_Cam.GetComponent<Camera>().ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+        {
+            if (Physics.Raycast(playerAimForOutline, out hit, pickupRange))
+            {
+                if ((hit.collider.tag == Tags.grabPropTag || hit.collider.tag == Tags.doorTag || hit.collider.tag == Tags.drawerTag))
+                {
+                    if(hit.collider.GetComponent<EnableOutline>() != null)
+                    {
+                        isHoveringAnObject = true;
+                        hit.collider.GetComponent<EnableOutline>().startCustomCoroutine(this.GetComponent<DragObject>());
+                    }
+                    else
+                    {
+                        Debug.LogWarning("The object you are trying to interact with does not have and EnabledOutline script attached.");
+                    }
+                    
+                }
+                else
+                {
+                    // Hitting something else.
+                    isHoveringAnObject = false;
+                }
+            }
+            else if (isHoveringAnObject == true)
+            {
+                // not anymore.
+                isHoveringAnObject = false;
+            }
+        }
     }
 }
